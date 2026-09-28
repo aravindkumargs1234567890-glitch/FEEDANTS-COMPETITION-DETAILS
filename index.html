@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feedants Competition Details</title>
+    <meta name="description" content="Feedants Full-Stack Classical Dance Competition module with dynamic lifecycle, atomic registrations, concurrency safety, and submission portal." />
+    <meta property="og:title" content="Feedants Competition Details" />
+    <meta property="og:description" content="Feedants Full-Stack Classical Dance Competition module with dynamic lifecycle, atomic registrations, concurrency safety, and submission portal." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Suppress Vite HMR WebSocket disconnection errors in iframe/preview sandbox
+      (function() {
+        var isWsError = function(arg) {
+          if (!arg) return false;
+          var str = typeof arg === 'object' && arg.message ? arg.message : String(arg);
+          return str.includes('WebSocket') || str.includes('websocket') || str.includes('ws://') || str.includes('wss://');
+        };
+
+        var origConsoleError = console.error;
+        console.error = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isWsError(arguments[i])) {
+              return; // silently suppress benign HMR iframe disconnection
+            }
+          }
+          return origConsoleError.apply(console, arguments);
+        };
+
+        window.addEventListener('unhandledrejection', function(e) {
+          if (isWsError(e.reason)) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+          }
+        }, true);
+
+        window.addEventListener('error', function(e) {
+          if (isWsError(e.message) || isWsError(e.error)) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

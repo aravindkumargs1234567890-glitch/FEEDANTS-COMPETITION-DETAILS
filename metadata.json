@@ -1,0 +1,6 @@
+{
+  "name": "Feedants Competition Details",
+  "description": "Feedants Full-Stack Classical Dance Competition module with dynamic lifecycle, atomic registrations, concurrency safety, and submission portal.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
